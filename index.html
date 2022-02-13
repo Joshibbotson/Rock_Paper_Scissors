@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <script>
+        let answer = (Math.floor(Math.random() * 10));
+        function computerPlay () /* Computer's choice generation */
+        {
+            if (answer > 3 && answer <= 6)
+
+            {let answer = "Rock" && console.log ("Computer's answer: Rock");}
+
+            if (answer <= 3)
+            {let answer = "Paper" && console.log ("Computer's answer: Paper");}
+
+            else if (answer > 6)
+            {let answer = "Scissors" &&  console.log ("Computer's answer: Scissors");}
+        }
+        /* announces choice and changes variables to respective choices */
+
+        const playerSelection = ("Your Answer: " + (prompt ("Rock, Paper or Scissors?")));  /* Player's choice input */
+        const computerSelection = computerPlay();
+        const winner = playRound ();
+
+
+        /* announces choices note: console.log isn't used for computerselection as it is a function */
+    
+        computerSelection 
+        console.log (playerSelection); 
+        
+        
+        /* needs more work does nothing yet */
+       function playRound() {
+           if (computerSelection == "Scissors")
+           {console.log ("beep beep get out of the way loser!");}
+       }
+
+       winner /* does nothing yet */
+    </script>
+    
+</body>
+</html>
