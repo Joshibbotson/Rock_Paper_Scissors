@@ -1,0 +1,26 @@
+.central {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin-top:25%;
+    margin-bottom: auto;
+
+    
+}
+
+.central > * {
+    background-color: slategray;
+    color: snow;
+    font-size: 3rem;
+    
+
+    border-radius: 5%;
+    padding:1rem;
+}
+
+.central > *:hover  {
+    background-color: white;
+    color: slategrey;
+    
+}

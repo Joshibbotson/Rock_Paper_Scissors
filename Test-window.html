@@ -15,34 +15,36 @@
             return itemsArray [Math.floor (Math.random()*itemsArray.length)]
             console.log()
         }
-    
+
         let computerSelection;
         let playerSelection;
         let computerScore;
         let playerScore;
 
-        game();
-        
-        function game() {
+        function playerChoice () {
+            playerSelection = (prompt('Rock, Paper, or Scissors?').toLowerCase())
+            
+            if ((playerSelection == 'rock')
+            || (playerSelection == 'paper')
+            || (playerSelection == 'scissors'))
+            {
+                console.log('correct input');
+                return playerSelection;}
 
+            else 
+            {
+                (alert ('Not an applicable answer, please try again'))
+             playerChoice();
 
-            function playerChoice() {
-                playerSelection = prompt ('Rock, Paper or Scissors?' + ' ');
-                
-                if ((playerSelection.toLowerCase) == 'rock'
-                || (playerSelection.toLowerCase) == 'paper'
-                || (playerSelection.toLowerCase) == 'scissors')
-                {playRound()}
-                else
-                prompt ("Invalid answer, try again");
-            }
+             }
+
+            
+            // console.log(playerSelection);
         }
+        playerChoice();
+        console.log(playerSelection + playerChoice());
 
-        playerSelection = playerChoice();
 
-        console.log (playerSelection);
-
-       
     </script>
 </body>
 </html>
