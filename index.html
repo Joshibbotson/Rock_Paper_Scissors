@@ -5,44 +5,67 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <link rel="stylesheet" href="Style.css" class="stylesheet">
+    
 </head>
 <body>
     <script>
-        const itemsArray = ['rock', 'paper', 'scissors'];
+
+
+        const itemsArray = [
+        'rock',
+        'paper',
+        'scissors'];
 
         function computerPlay () {
             return itemsArray [Math.floor (Math.random()*itemsArray.length)]
-            console.log()
         }
     
-        let computerSelection;
+        computerPlay();
+
+        let computerSelection = computerPlay();
         let playerSelection;
         let computerScore;
         let playerScore;
 
-        game();
+
+    
+    playerChoice();
+
+    function playerChoice () {
+        playerSelection = (prompt('Rock, Paper, or Scissors?').toLowerCase())
         
-        function game() {
+        if ((playerSelection == 'rock')
+        || (playerSelection == 'paper')
+        || (playerSelection == 'scissors'))
+        {
+            return playerSelection;}
 
+        else 
+        {
+            (alert ('Not an applicable answer, please try again'))
+        playerChoice();
 
-            function playerChoice() {
-                playerSelection = prompt ('Rock, Paper or Scissors?' + ' ');
-                
-                if ((playerSelection.toLowerCase) == 'rock'
-                || (playerSelection.toLowerCase) == 'paper'
-                || (playerSelection.toLowerCase) == 'scissors')
-                {playRound()}
-                else
-                prompt ("Invalid answer, try again");
-            }
         }
+    }
 
-        playerSelection = playerChoice();
 
-        console.log (playerSelection);
+    Score(playerSelection);
 
-       
+    function Score (playerSelection) {
+        console.log (`Computer: ${computerSelection}`);
+        console.log (`Your choice: ${playerSelection}`)
+        if (playerSelection == computerSelection)
+        {console.log ("Outcome: big o'l tie that")}
+
+        else if ((playerSelection == 'rock' && computerSelection == 'paper')
+        || (playerSelection == 'paper' && computerSelection == 'scissors')
+        || (playerSelection == 'scissors' && computerSelection == 'rock'))
+        { 
+            console.log ('Outcome: YOU LOSE')
+        }
+        else {console.log ("Outcome: YOU WIN")}
+    }
+    
     </script>
 </body>
 </html>

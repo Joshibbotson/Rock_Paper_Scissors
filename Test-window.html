@@ -9,40 +9,79 @@
 </head>
 <body>
     <script>
+
+
         const itemsArray = ['rock', 'paper', 'scissors'];
 
-        function computerPlay () {
+        function computerChoice () {
             return itemsArray [Math.floor (Math.random()*itemsArray.length)]
             console.log()
         }
 
         let computerSelection;
-        let playerSelection;
+        
         let computerScore;
         let playerScore;
 
+        game ();
+
+        function game() {
+
+
         function playerChoice () {
-            playerSelection = (prompt('Rock, Paper, or Scissors?').toLowerCase())
+             let playerSelection = (prompt('Rock, Paper, or Scissors?').toLowerCase())
             
             if ((playerSelection == 'rock')
             || (playerSelection == 'paper')
             || (playerSelection == 'scissors'))
-            {
-                console.log('correct input');
-                return playerSelection;}
+            return playerSelection ;
 
             else 
-            {
-                (alert ('Not an applicable answer, please try again'))
-             playerChoice();
-
-             }
-
             
-            // console.log(playerSelection);
+                alert ('Not an applicable answer, please try again');
+             playerChoice();             
         }
-        playerChoice();
-        console.log(playerSelection + playerChoice());
+
+        const playerSelection = playerChoice();
+        console.log (playerSelection);
+    }
+        // const playerSelection = playerChoice();
+        // console.log (playerSelection);
+
+       // winner determination //
+        // console.log(scoreboard);
+        // let outcome;
+
+        // scoreBoard();
+        // function scoreBoard () {
+        //     computerSelection = computerChoice();
+
+        //     if (playerChoice == computerChoice)
+        //     {(outcome = 'Tie');
+        //     console.log ('tie');
+        //     return outcome;}
+            
+        //     if ((playerChoice == 'paper'
+        //     && computerChoice == 'scissors')
+        //     || (playerChoice == 'rock'
+        //     && computerChoice == 'paper')
+        //     || (playerChoice == 'scissors'
+        //     && computerChoice == 'rock'))
+        //     {outcome = 'you lose';
+        //     console.log ("you lose");
+        //     return outcome;}
+
+        //     else {(outcome = 'you win');
+        //     console.log ("you win");
+        //     return outcome;}
+        
+        
+        // }
+        // }
+
+        // console.log (computerChoice());
+    
+    
 
 
     </script>

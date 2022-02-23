@@ -6,7 +6,7 @@ Notes: for variables that will be altered, define them with let computerScore; b
 
 just console.log the scoreboard not the choices.
 
-wrap
+wrap all of it but your variables in a game function
 
 
 Overall scope of execution: 
@@ -18,7 +18,8 @@ Overall scope of execution:
 
 psuedocode:
 - Choice_Player: playerChoice through prompt, function to log playerChoice into a variable through using if and else statements. console log to present player's choice.
-- Choice_Computer: computerChoice through function that uses a variable that returns a random number between 1-3, using if statements to match 1-3 to Rock,Paper,Scissors. The variable is logged into a new variable?(possibly the same variable for random number) this variable is then used as the computerChoice variable.
+
+- Choice_Computer: computerChoice through function that uses a variable that returns a random number between 1-3, using if statements to match 1-3 to Rock,Paper,Scissors. The variable is logged into a new variable?(possibly the same variable for random number) this variable is then used as the computerChoice variable. (NOTE THIS WAS COMPLETED USING AN ARRAY AND GOD DID IT REQUIRE LESS CODE)
 
 - Scoreboard: Function that takes the variables playerChoice and computerChoice, through if statements determines a winner, the if statement will could be boolean with two options (computerWin (true/false) or playerWin (true/false)). E.g. if playerChoice = "Rock" && computerChoice = "Scissors" {let playerWin = true}. This will need to be accompanied by another function for if statements? if playerWin = true {console.log = "You Win!"}. 
 
