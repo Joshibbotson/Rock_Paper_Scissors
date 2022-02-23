@@ -10,7 +10,9 @@
 <body>
     <script>
 
+        function playRound (){
 
+        // COMPUTER CHOICE//
         const itemsArray = [
         'rock',
         'paper',
@@ -24,11 +26,10 @@
 
         let computerSelection = computerPlay();
         let playerSelection;
-        let computerScore;
-        let playerScore;
+        
 
 
-    
+    // PLAYER CHOICE//
     playerChoice();
 
     function playerChoice () {
@@ -48,23 +49,52 @@
         }
     }
 
+    //OUTCOME + SCORE POINT//
 
-    Score(playerSelection);
+    Outcome(playerSelection);
 
-    function Score (playerSelection) {
+    let computerScore=0;
+        let playerScore=0;
+        let tieScore=0;
+
+    function Outcome (playerSelection) {
+        let computerScore=0;
+        let playerScore=0;
+        let tieScore=0;
+
         console.log (`Computer: ${computerSelection}`);
         console.log (`Your choice: ${playerSelection}`)
         if (playerSelection == computerSelection)
-        {console.log ("Outcome: big o'l tie that")}
+        {
+            console.log ("Outcome: big o'l tie that")
+            tieScore++
+            console.log(tieScore)
+            return tieScore}
 
         else if ((playerSelection == 'rock' && computerSelection == 'paper')
         || (playerSelection == 'paper' && computerSelection == 'scissors')
         || (playerSelection == 'scissors' && computerSelection == 'rock'))
         { 
             console.log ('Outcome: YOU LOSE')
+            computerScore++
+            console.log(computerScore)
+            return computerScore}
+
+        else {
+            console.log ("Outcome: YOU WIN")
+            playerScore++
+            console.log(playerScore)
+            return playerScore}
         }
-        else {console.log ("Outcome: YOU WIN")}
+
+        //system to increment rounds, not working yet though//
+        while (playerScore || computerScore || tieScore < 3) {
+        playRound();
     }
+    }
+    playRound();
+
+    
     
     </script>
 </body>
