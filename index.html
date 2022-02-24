@@ -53,9 +53,9 @@
 
     Outcome(playerSelection);
 
-    let computerScore=0;
-        let playerScore=0;
-        let tieScore=0;
+        let computerScore = 0;
+        let playerScore = 0;
+        let tieScore = 0;
 
     function Outcome (playerSelection) {
         let computerScore=0;
@@ -67,7 +67,7 @@
         if (playerSelection == computerSelection)
         {
             console.log ("Outcome: big o'l tie that")
-            tieScore++
+            ++tieScore
             console.log(tieScore)
             return tieScore}
 
@@ -76,16 +76,44 @@
         || (playerSelection == 'scissors' && computerSelection == 'rock'))
         { 
             console.log ('Outcome: YOU LOSE')
-            computerScore++
+            ++computerScore
             console.log(computerScore)
             return computerScore}
 
         else {
             console.log ("Outcome: YOU WIN")
-            playerScore++
+            ++playerScore
             console.log(playerScore)
             return playerScore}
         }
+
+
+        // Scorecalculator doesn't work yet, score keeps going back to 0 but +1 is added //
+        //possibly this function does nothing at all as well//
+        function scoreCalculator (computerScore, playerScore, tieScore) {
+
+            let computerScoreTotal = 0;
+            let playerScoreTotal = 0;
+            let tieScoreTotal = 0;
+
+            if 
+            (computerScore == true)
+            {++computerScoreTotal
+            console.log ("computer score", computerScoreTotal ())}
+
+            else if
+            (playerScore == true)
+            {++playerScoreTotal
+            console.log ("player score", playerScoreTotal())}
+
+            else if
+            (tieScore == true) 
+            {++tieScoreTotal
+            console.log ("tie score", tieScoreTotal())}
+        }
+        scoreCalculator();
+
+
 
         //system to increment rounds, not working yet though//
         while (playerScore || computerScore || tieScore < 3) {
