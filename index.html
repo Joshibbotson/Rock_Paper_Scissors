@@ -27,69 +27,53 @@
         let computerSelection = computerPlay();
         let playerSelection;
         
+//OUTCOME + SCORE POINT//
 
+Outcome(playerSelection);
 
-    // PLAYER CHOICE//
-    playerChoice();
+let computerScore = 0;
+let playerScore = 0;
+let tieScore = 0;
 
-    function playerChoice () {
-        playerSelection = (prompt('Rock, Paper, or Scissors?').toLowerCase())
-        
-        if ((playerSelection == 'rock')
-        || (playerSelection == 'paper')
-        || (playerSelection == 'scissors'))
-        {
-            return playerSelection;}
+function Outcome (playerSelection) {
+let computerScore=0;
+let playerScore=0;
+let tieScore=0;
 
-        else 
-        {
-            (alert ('Not an applicable answer, please try again'))
-        playerChoice();
+console.log (`Computer: ${computerSelection}`);
+console.log (`Your choice: ${playerSelection}`)
+if (playerSelection == computerSelection)
+{
+    console.log ("Outcome: big o'l tie that")
+    ++tieScore
+    console.log(tieScore)
+    return tieScore}
 
-        }
-    }
+else if ((playerSelection == 'rock' && computerSelection == 'paper')
+|| (playerSelection == 'paper' && computerSelection == 'scissors')
+|| (playerSelection == 'scissors' && computerSelection == 'rock'))
+{ 
+    console.log ('Outcome: YOU LOSE')
+    ++computerScore
+    console.log(computerScore)
+    return computerScore}
 
-    //OUTCOME + SCORE POINT//
+else {
+    console.log ("Outcome: YOU WIN")
+    ++playerScore
+    console.log(playerScore)
+    return playerScore}
+}
 
-    Outcome(playerSelection);
-
-        let computerScore = 0;
-        let playerScore = 0;
-        let tieScore = 0;
-
-    function Outcome (playerSelection) {
-        let computerScore=0;
-        let playerScore=0;
-        let tieScore=0;
-
-        console.log (`Computer: ${computerSelection}`);
-        console.log (`Your choice: ${playerSelection}`)
-        if (playerSelection == computerSelection)
-        {
-            console.log ("Outcome: big o'l tie that")
-            ++tieScore
-            console.log(tieScore)
-            return tieScore}
-
-        else if ((playerSelection == 'rock' && computerSelection == 'paper')
-        || (playerSelection == 'paper' && computerSelection == 'scissors')
-        || (playerSelection == 'scissors' && computerSelection == 'rock'))
-        { 
-            console.log ('Outcome: YOU LOSE')
-            ++computerScore
-            console.log(computerScore)
-            return computerScore}
-
-        else {
-            console.log ("Outcome: YOU WIN")
-            ++playerScore
-            console.log(playerScore)
-            return playerScore}
-        }
-
-
-        // Scorecalculator doesn't work yet, score keeps going back to 0 but +1 is added //
+// Scorecalculator doesn't work yet, score keeps going back to 0 but +1 is added //
         //possibly this function does nothing at all as well//
+
+        scoreCalculator(computerScore, playerScore, tieScore);
+            let computerScoreTotal = 0;
+            let playerScoreTotal = 0;
+            let tieScoreTotal = 0;
+        
+
         function scoreCalculator (computerScore, playerScore, tieScore) {
 
             let computerScoreTotal = 0;
@@ -111,12 +95,30 @@
             {++tieScoreTotal
             console.log ("tie score", tieScoreTotal())}
         }
-        scoreCalculator();
+        
+    // PLAYER CHOICE//
+    playerChoice();
 
+    function playerChoice () {
+        playerSelection = (prompt('Rock, Paper, or Scissors?').toLowerCase())
+        
+        if ((playerSelection == 'rock')
+        || (playerSelection == 'paper')
+        || (playerSelection == 'scissors'))
+        {
+            return playerSelection;}
 
+        else 
+        {
+            (alert ('Not an applicable answer, please try again'))
+        playerChoice();
+
+        }
+    }
+    
 
         //system to increment rounds, not working yet though//
-        while (playerScore || computerScore || tieScore < 3) {
+        while (playerScoreTotal || computerScoreTotal || tieScoreTotal < 3) {
         playRound();
     }
     }

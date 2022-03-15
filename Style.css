@@ -1,5 +1,11 @@
-.central {
+* {
+    margin: 0px;
+    padding:0px;
+}
+
+.container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 2rem;
@@ -9,7 +15,7 @@
     
 }
 
-.central > * {
+.container {
     background-color: slategray;
     color: snow;
     font-size: 3rem;
@@ -19,8 +25,16 @@
     padding:1rem;
 }
 
-.central > *:hover  {
-    background-color: white;
-    color: slategrey;
-    
+h2 {
+    font-size: 1em;
+    color:white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+a {
+    font-size: 0.5em;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
 }
