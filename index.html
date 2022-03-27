@@ -1,131 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors</title>
-    
-</head>
-<body>
+  </head>
+  <body>
     <script>
+      game();
 
-        function playRound (){
+      function game() {
+        let computerScoreTotal = 0;
+        let playerScoreTotal = 0;
+        let tieScoreTotal = 0;
 
-        // COMPUTER CHOICE//
-        const itemsArray = [
-        'rock',
-        'paper',
-        'scissors'];
-
-        function computerPlay () {
-            return itemsArray [Math.floor (Math.random()*itemsArray.length)]
+        for (let i = 0; i < 5; i++) {
+          console.log(`-----Round ${i + 1}-----`);
+          playRound();
+          console.log(`Computer Score: ${computerScoreTotal}`);
+          console.log(
+            `Player Score: ${playerScoreTotal}\n______________________\n \n \n \n `
+          );
         }
-    
-        computerPlay();
 
-        let computerSelection = computerPlay();
-        let playerSelection;
-        
-//OUTCOME + SCORE POINT//
-
-Outcome(playerSelection);
-
-let computerScore = 0;
-let playerScore = 0;
-let tieScore = 0;
-
-function Outcome (playerSelection) {
-let computerScore=0;
-let playerScore=0;
-let tieScore=0;
-
-console.log (`Computer: ${computerSelection}`);
-console.log (`Your choice: ${playerSelection}`)
-if (playerSelection == computerSelection)
-{
-    console.log ("Outcome: big o'l tie that")
-    ++tieScore
-    console.log(tieScore)
-    return tieScore}
-
-else if ((playerSelection == 'rock' && computerSelection == 'paper')
-|| (playerSelection == 'paper' && computerSelection == 'scissors')
-|| (playerSelection == 'scissors' && computerSelection == 'rock'))
-{ 
-    console.log ('Outcome: YOU LOSE')
-    ++computerScore
-    console.log(computerScore)
-    return computerScore}
-
-else {
-    console.log ("Outcome: YOU WIN")
-    ++playerScore
-    console.log(playerScore)
-    return playerScore}
-}
-
-// Scorecalculator doesn't work yet, score keeps going back to 0 but +1 is added //
-        //possibly this function does nothing at all as well//
-
-        scoreCalculator(computerScore, playerScore, tieScore);
-            let computerScoreTotal = 0;
-            let playerScoreTotal = 0;
-            let tieScoreTotal = 0;
-        
-
-        function scoreCalculator (computerScore, playerScore, tieScore) {
-
-            let computerScoreTotal = 0;
-            let playerScoreTotal = 0;
-            let tieScoreTotal = 0;
-
-            if 
-            (computerScore == true)
-            {++computerScoreTotal
-            console.log ("computer score", computerScoreTotal ())}
-
-            else if
-            (playerScore == true)
-            {++playerScoreTotal
-            console.log ("player score", playerScoreTotal())}
-
-            else if
-            (tieScore == true) 
-            {++tieScoreTotal
-            console.log ("tie score", tieScoreTotal())}
+        if ((i = 5)) {
+          winnerAnnouncement();
         }
-        
-    // PLAYER CHOICE//
-    playerChoice();
 
-    function playerChoice () {
-        playerSelection = (prompt('Rock, Paper, or Scissors?').toLowerCase())
-        
-        if ((playerSelection == 'rock')
-        || (playerSelection == 'paper')
-        || (playerSelection == 'scissors'))
-        {
-            return playerSelection;}
-
-        else 
-        {
-            (alert ('Not an applicable answer, please try again'))
-        playerChoice();
-
+        function winnerAnnouncement() {
+          if (computerScoreTotal > playerScoreTotal) {
+            return console.log(
+              "\n______________________\n \n \nYOU LOSE\n \n \n______________________"
+            );
+          }
+          if (computerScoreTotal === playerScoreTotal) {
+            return console.log(
+              "\n______________________\n \n \nD R A W\n \n \n______________________"
+            );
+          } else if (computerScoreTotal < playerScoreTotal) {
+            return console.log(
+              "\n______________________\n \n \nYOU WIN\n \n \n______________________"
+            );
+          }
         }
-    }
-    
 
-        //system to increment rounds, not working yet though//
-        while (playerScoreTotal || computerScoreTotal || tieScoreTotal < 3) {
-        playRound();
-    }
-    }
-    playRound();
+        ///////////////////////////////////////////////////////////////////////////////
 
-    
-    
+        playRound(playerSelection, computerSelection);
+
+        function playRound(player, computer) {
+          let computerScore = 0;
+          let playerScore = 0;
+          let tieScore = 0;
+          // COMPUTER CHOICE//
+          const itemsArray = ["rock", "paper", "scissors"];
+
+          computerPlay();
+          function computerPlay() {
+            return itemsArray[Math.floor(Math.random() * itemsArray.length)];
+          }
+
+          let computerSelection = computerPlay();
+          let playerSelection = playerChoice();
+
+          //   PLAYER CHOICE//
+
+          function playerChoice() {
+            let playerSelection = prompt(
+              "Rock, Paper, or Scissors?"
+            ).toLowerCase();
+
+            if (
+              playerSelection == "rock" ||
+              playerSelection == "paper" ||
+              playerSelection == "scissors"
+            ) {
+              return playerSelection;
+            } else {
+              alert("Not an applicable answer, please try again");
+              playerChoice();
+            }
+          }
+          //OUTCOME + SCORE POINT//
+
+          console.log(`Computer: ${computerSelection}`);
+          console.log(`Your choice: ${playerSelection}`);
+
+          Outcome();
+          function Outcome() {
+            if (playerSelection == computerSelection) {
+              console.log("Outcome: big o'l tie that\n______________________");
+              tieScore = true;
+              return tieScore;
+            } else if (
+              (playerSelection == "rock" && computerSelection == "paper") ||
+              (playerSelection == "paper" && computerSelection == "scissors") ||
+              (playerSelection == "scissors" && computerSelection == "rock")
+            ) {
+              console.log("Outcome: YOU LOSE\n______________________");
+              computerScore = true;
+              return computerScore;
+            } else {
+              console.log("Outcome: YOU WIN\n______________________");
+              playerScore = true;
+              return playerScore;
+            }
+
+            // Adds a score point total points for computer/player/tie depending on if their score marker is set as true//
+          }
+          switch (computerScore) {
+            case true:
+              computerScoreTotal++;
+            default:
+              computerScoreTotal;
+          }
+
+          switch (playerScore) {
+            case true:
+              playerScoreTotal++;
+            default:
+              playerScoreTotal;
+          }
+
+          switch (tieScore) {
+            case true:
+              tieScoreTotal++;
+            default:
+              tieScoreTotal;
+          }
+        }
+      }
     </script>
-</body>
+  </body>
 </html>
