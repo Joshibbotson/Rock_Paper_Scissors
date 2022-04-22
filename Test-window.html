@@ -1,13 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RPS</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="Style.css" class="style" />
+  </head>
+  <body>
+    <button id="start" class="btn">Start Game</button>
+    <div class="player-output"></div>
+    <div class="paragraph">
+      <p>
+        First things, first. Right click anywhere on the screen and follow the
+        steps below to open the console (this will show the results of the
+        game). Once console is open, click the 'Start Game' button to play!
+      </p>
+    </div>
+    <div class="tutorial-container">
+      <img
+        src="tutorial.png"
+        alt="inspect page"
+        class="tutorial1"
+        width="300px"
+      />
+      <img src="tutorial2.png" alt="open console" height="300px" />
+    </div>
+    <script>
+      const startButton = document.getElementById("start");
+      startButton.addEventListener("click", game);
 
-</head>
-<body>
-    <script src="app.js"></script>
-</body>
+      function game() {
+        let computerScoreTotal = 0;
+        let playerScoreTotal = 0;
+        let tieScoreTotal = 0;
+
+        for (let i = 0; i < 5; i++) {
+          console.log(`-----Round ${i + 1}-----`);
+          playRound();
+          console.log(`Computer Score: ${computerScoreTotal}`);
+          console.log(
+            `Player Score: ${playerScoreTotal}\n______________________\n \n \n \n `
+          );
+        }
+
+        if ((i = 5)) {
+          winnerAnnouncement();
+        }
+
+        function winnerAnnouncement() {
+          if (computerScoreTotal > playerScoreTotal) {
+            return console.log(
+              "\n______________________\n \n \nYOU LOSE\n \n \n______________________"
+            );
+          }
+          if (computerScoreTotal === playerScoreTotal) {
+            return console.log(
+              "\n______________________\n \n \nD R A W\n \n \n______________________"
+            );
+          } else if (computerScoreTotal < playerScoreTotal) {
+            return console.log(
+              "\n______________________\n \n \nYOU WIN\n \n \n______________________"
+            );
+          }
+        }
+
+        ///////////////////////////////////////////////////////////////////////////////
+
+        playRound(playerSelection, computerSelection);
+
+        function playRound(player, computer) {
+          let computerScore = 0;
+          let playerScore = 0;
+          let tieScore = 0;
+          // COMPUTER CHOICE//
+          const itemsArray = ["rock", "paper", "scissors"];
+
+          computerPlay();
+          function computerPlay() {
+            return itemsArray[Math.floor(Math.random() * itemsArray.length)];
+          }
+
+          let computerSelection = computerPlay();
+          let playerSelection = playerChoice();
+
+          //   PLAYER CHOICE//
+
+          function playerChoice() {
+            let playerSelection = prompt(
+              "Rock, Paper, or Scissors?"
+            ).toLowerCase();
+
+            if (
+              playerSelection == "rock" ||
+              playerSelection == "paper" ||
+              playerSelection == "scissors"
+            ) {
+              return playerSelection;
+            } else {
+              alert("Not an applicable answer, please try again");
+              playerChoice();
+            }
+          }
+          //OUTCOME + SCORE POINT//
+
+          console.log(`Computer: ${computerSelection}`);
+          console.log(`Your choice: ${playerSelection}`);
+
+          Outcome();
+          function Outcome() {
+            if (playerSelection == computerSelection) {
+              console.log("Outcome: big o'l tie that\n______________________");
+              tieScore = true;
+              return tieScore;
+            } else if (
+              (playerSelection == "rock" && computerSelection == "paper") ||
+              (playerSelection == "paper" && computerSelection == "scissors") ||
+              (playerSelection == "scissors" && computerSelection == "rock")
+            ) {
+              console.log("Outcome: YOU LOSE\n______________________");
+              computerScore = true;
+              return computerScore;
+            } else {
+              console.log("Outcome: YOU WIN\n______________________");
+              playerScore = true;
+              return playerScore;
+            }
+
+            // Adds a score point total points for computer/player/tie depending on if their score marker is set as true//
+          }
+          switch (computerScore) {
+            case true:
+              computerScoreTotal++;
+            default:
+              computerScoreTotal;
+          }
+
+          switch (playerScore) {
+            case true:
+              playerScoreTotal++;
+            default:
+              playerScoreTotal;
+          }
+
+          switch (tieScore) {
+            case true:
+              tieScoreTotal++;
+            default:
+              tieScoreTotal;
+          }
+        }
+      }
+    </script>
+  </body>
 </html>
