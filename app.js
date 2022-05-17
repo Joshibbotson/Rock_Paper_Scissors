@@ -1,56 +1,105 @@
-//
-// const itemsArray = ["rock", "paper", "scissors"];
+rock = document.getElementById('rockBtn');
+paper = document.getElementById('paperBtn');
+scissors = document.getElementById('scissorsBtn');
 
-// const playerSelection = prompt("Rock, paper or scissors?").toLowerCase;
-// const computerSelection = computerPlay();
+let playerSelection;
 
-// function computerPlay() {
-//   return [Math.floor(Math.random() * itemsArray.length)];
-// }
+rock.addEventListener('click', (e) => {
+playerSelection = "rock";
+game();
+});
 
-// function playRound(playerSelection, computerSelection) {
-//   if (playerSelection == computerSelection) {
-//     console.log("draw");
-//   } else if (
-//     (playerSelection == "rock" && computerSelection == "paper") ||
-//     (playerSelection == "paper" && computerSelection == "scissors") ||
-//     (playerSelection == "scissors" && computerSelection == "rock")
-//   ) {
-//     console.log("You lose");
-//   } else {
-//     console.log("you win");
-//   }
-// }
-// playRound(playerSelection, computerSelection);
-
-// for (let i = 0; i < itemsArray.length; i++) {
-//   console.log(computerPlay());
-// }
-let score = 2;
-for (let i = 0; i < 3; i++) {
+paper.addEventListener('click', (e) => {
+  playerSelection = "paper";
   game();
-  console.log(score);
-}
+  });
+
+scissors.addEventListener('click', (e) => {
+  playerSelection = "scissors";
+  game();
+  });
+  
+
 
 function game() {
-  const answer = confirm("true or false?");
-  let item = answer;
-  let withinBox;
-  let test = withinBox;
+  let computerScoreTotal = 0;
+  let playerScoreTotal = 0;
+  let tieScoreTotal = 0;
 
-  switch (test) {
-    case true:
-      return score++;
-    default:
-      return score--;
+  for (let i = 0; i < 5; i++) {
+    console.log(`-----Round ${i + 1}-----`);
+    playRound();
+    console.log(`Computer Score: ${computerScoreTotal}`);
+    console.log(
+      `Player Score: ${playerScoreTotal}\n______________________\n \n \n \n `
+    );
   }
-  makeItemTrue(item);
 
-  function makeItemTrue(decision) {
-    if ((decision = true)) {
-      return (withinBox = true);
-    } else if ((decision = false)) {
-      return (withinBox = false);
+  if ((i = 5)) {
+    winnerAnnouncement();
+  }
+
+  function winnerAnnouncement() {
+    if (computerScoreTotal > playerScoreTotal) {
+      return console.log(
+        "\n______________________\n \n \nYOU LOSE\n \n \n______________________"
+      );
+    }
+    if (computerScoreTotal === playerScoreTotal) {
+      return console.log(
+        "\n______________________\n \n \nD R A W\n \n \n______________________"
+      );
+    } else if (computerScoreTotal < playerScoreTotal) {
+      return console.log(
+        "\n______________________\n \n \nYOU WIN\n \n \n______________________"
+      );
+    }
+  }
+
+  ///////////////////////////////////////////////////////////////////////////////
+
+  playRound(playerSelection, computerSelection);
+
+  function playRound(player, computer) {
+    let computerScore = 0;
+    let playerScore = 0;
+    let tieScore = 0;
+    
+    // COMPUTER CHOICE//
+    const itemsArray = ["rock", "paper", "scissors"];
+
+    computerPlay();
+    function computerPlay() {
+      return itemsArray[Math.floor(Math.random() * itemsArray.length)];
+    }
+
+    let computerSelection = computerPlay();
+   
+
+    //OUTCOME + SCORE POINT//
+
+    console.log(`Computer: ${computerSelection}`);
+    console.log(`Your choice: ${playerSelection}`);
+
+    Outcome();
+    function Outcome() {
+      if (playerSelection == computerSelection) {
+        console.log("Outcome: big o'l tie that\n______________________");
+        tieScore = true;
+        return tieScore;
+      } else if (
+        (playerSelection == "rock" && computerSelection == "paper") ||
+        (playerSelection == "paper" && computerSelection == "scissors") ||
+        (playerSelection == "scissors" && computerSelection == "rock")
+      ) {
+        console.log("Outcome: YOU LOSE\n______________________");
+        computerScore = true;
+        return computerScore;
+      } else {
+        console.log("Outcome: YOU WIN\n______________________");
+        playerScore = true;
+        return playerScore;
+      }
     }
   }
 }
