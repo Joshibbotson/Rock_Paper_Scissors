@@ -2,65 +2,58 @@ rock = document.getElementById('rockBtn');
 paper = document.getElementById('paperBtn');
 scissors = document.getElementById('scissorsBtn');
 
+playerDisplay = document.getElementById('playerDisplay');
+computerDisplay = document.getElementById('computerDisplay');
+winnerDisplay = document.getElementById('winnerDisplay');
+
+
 let playerSelection;
 
 rock.addEventListener('click', (e) => {
 playerSelection = "rock";
-game();
+playRound();
+declareWinner();
 });
 
 paper.addEventListener('click', (e) => {
   playerSelection = "paper";
-  game();
+  playRound();
+  declareWinner();
   });
 
 scissors.addEventListener('click', (e) => {
   playerSelection = "scissors";
-  game();
+  playRound();
+  declareWinner();
   });
   
-
-
-function game() {
   let computerScoreTotal = 0;
   let playerScoreTotal = 0;
-  let tieScoreTotal = 0;
-
-  for (let i = 0; i < 5; i++) {
-    console.log(`-----Round ${i + 1}-----`);
-    playRound();
-    console.log(`Computer Score: ${computerScoreTotal}`);
-    console.log(
-      `Player Score: ${playerScoreTotal}\n______________________\n \n \n \n `
-    );
+  let tieScoreTotal= 0;
+  
+function declareWinner() {
+  console.log(computerScoreTotal, playerScoreTotal, tieScoreTotal)
+  if (computerScoreTotal === 5) {
+    console.log("YOU LOSE");
+    computerScoreTotal = 0;
+    playerScoreTotal = 0;
+    tieScoreTotal = 0;
   }
-
-  if ((i = 5)) {
-    winnerAnnouncement();
+  if (playerScoreTotal === 5) {
+    console.log("YOU WIN")
+    computerScoreTotal = 0;
+    playerScoreTotal = 0;
+    tieScoreTotal = 0;
+  } 
+  else if (tieScoreTotal === 5) {
+    console.log("TIE");
+    computerScoreTotal = 0;
+    playerScoreTotal = 0;
+    tieScoreTotal = 0;
   }
+}
 
-  function winnerAnnouncement() {
-    if (computerScoreTotal > playerScoreTotal) {
-      return console.log(
-        "\n______________________\n \n \nYOU LOSE\n \n \n______________________"
-      );
-    }
-    if (computerScoreTotal === playerScoreTotal) {
-      return console.log(
-        "\n______________________\n \n \nD R A W\n \n \n______________________"
-      );
-    } else if (computerScoreTotal < playerScoreTotal) {
-      return console.log(
-        "\n______________________\n \n \nYOU WIN\n \n \n______________________"
-      );
-    }
-  }
-
-  ///////////////////////////////////////////////////////////////////////////////
-
-  playRound(playerSelection, computerSelection);
-
-  function playRound(player, computer) {
+  function playRound() {
     let computerScore = 0;
     let playerScore = 0;
     let tieScore = 0;
@@ -68,7 +61,6 @@ function game() {
     // COMPUTER CHOICE//
     const itemsArray = ["rock", "paper", "scissors"];
 
-    computerPlay();
     function computerPlay() {
       return itemsArray[Math.floor(Math.random() * itemsArray.length)];
     }
@@ -78,13 +70,13 @@ function game() {
 
     //OUTCOME + SCORE POINT//
 
-    console.log(`Computer: ${computerSelection}`);
-    console.log(`Your choice: ${playerSelection}`);
+    computerDisplay.textContent= `Computer: ${computerSelection}`
+    playerDisplay.textContent= `Player: ${playerSelection}`
 
     Outcome();
     function Outcome() {
       if (playerSelection == computerSelection) {
-        console.log("Outcome: big o'l tie that\n______________________");
+        winnerDisplay.textContent = "Outcome: big o'l tie that"
         tieScore = true;
         return tieScore;
       } else if (
@@ -92,14 +84,34 @@ function game() {
         (playerSelection == "paper" && computerSelection == "scissors") ||
         (playerSelection == "scissors" && computerSelection == "rock")
       ) {
-        console.log("Outcome: YOU LOSE\n______________________");
+        winnerDisplay.textContent = "Outcome: YOU LOSE";
         computerScore = true;
         return computerScore;
       } else {
-        console.log("Outcome: YOU WIN\n______________________");
+        winnerDisplay.textContent = "Outcome: YOU WIN";
         playerScore = true;
         return playerScore;
       }
+
+    }
+    switch (computerScore) {
+      case true:
+        return computerScoreTotal++;
+      default:
+        computerScoreTotal;
+    }
+
+    switch (playerScore) {
+      case true:
+        return playerScoreTotal++;
+      default:
+        playerScoreTotal;
+    }
+
+    switch (tieScore) {
+      case true:
+        return tieScoreTotal++;
+      default:
+        tieScoreTotal;
     }
   }
-}
