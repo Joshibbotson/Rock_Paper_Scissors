@@ -5,6 +5,9 @@ scissors = document.getElementById('scissorsBtn');
 playerDisplay = document.getElementById('playerDisplay');
 computerDisplay = document.getElementById('computerDisplay');
 winnerDisplay = document.getElementById('winnerDisplay');
+playerScoreDisplay = document.getElementById('playerScore');
+computerScoreDisplay = document.getElementById('computerScore');
+tieScoreDisplay = document.getElementById('tieScore')
 
 
 let playerSelection;
@@ -32,21 +35,23 @@ scissors.addEventListener('click', (e) => {
   let tieScoreTotal= 0;
   
 function declareWinner() {
-  console.log(computerScoreTotal, playerScoreTotal, tieScoreTotal)
+  playerScoreDisplay.textContent=`Player Score: ${playerScoreTotal}`;
+  computerScoreDisplay.textContent=`Computer Score: ${computerScoreTotal}`;
+  tieScoreDisplay.textContent=`Tie Score: ${tieScoreTotal}`;
   if (computerScoreTotal === 5) {
-    console.log("YOU LOSE");
+    winnerDisplay.textContent = "YOU LOSE";
     computerScoreTotal = 0;
     playerScoreTotal = 0;
     tieScoreTotal = 0;
   }
   if (playerScoreTotal === 5) {
-    console.log("YOU WIN")
+    winnerDisplay.textContent = "YOU WIN";
     computerScoreTotal = 0;
     playerScoreTotal = 0;
     tieScoreTotal = 0;
   } 
   else if (tieScoreTotal === 5) {
-    console.log("TIE");
+    winnerDisplay.textContent = "TIE";
     computerScoreTotal = 0;
     playerScoreTotal = 0;
     tieScoreTotal = 0;
@@ -76,7 +81,6 @@ function declareWinner() {
     Outcome();
     function Outcome() {
       if (playerSelection == computerSelection) {
-        winnerDisplay.textContent = "Outcome: big o'l tie that"
         tieScore = true;
         return tieScore;
       } else if (
@@ -84,11 +88,9 @@ function declareWinner() {
         (playerSelection == "paper" && computerSelection == "scissors") ||
         (playerSelection == "scissors" && computerSelection == "rock")
       ) {
-        winnerDisplay.textContent = "Outcome: YOU LOSE";
         computerScore = true;
         return computerScore;
       } else {
-        winnerDisplay.textContent = "Outcome: YOU WIN";
         playerScore = true;
         return playerScore;
       }

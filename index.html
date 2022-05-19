@@ -8,16 +8,30 @@
     <link rel="stylesheet" href="Style.css" class="rel">
   </head>
   <body>
-    <button id="rockBtn" class="btn">Rock</button>
-    <button id="paperBtn" class="btn">Paper</button>
-    <button id="scissorsBtn" class="btn">Scissors</button>
     <div class="results-container">
       <div class="choices">
-        <h1 id="playerDisplay">Player: </h1>
-        <h1 id="computerDisplay">Computer: </h1>
+        <div class="player-container">
+          <div class="score-container">
+            <h1 id="playerScore">Player Score:</h1>
+          </div>
+            <h1 id="playerDisplay">Player: </h1>
+        </div>
+        <div class="computer-container">
+          <div class="score-container">
+            <h1 id="computerScore"> Computer Score:</h1>
+          </div>
+            <h1 id="computerDisplay">Computer: </h1>
+        </div>
       </div>
-    <h1 id="winnerDisplay">Outcome: </h1>
+    <h1 id="winnerDisplay">Choose one !</h1>
   </div>
+  <div class="button-container">
+    <button id="rockBtn" class="btn">🪨</button>
+    <button id="paperBtn" class="btn">📄</button>
+    <button id="scissorsBtn" class="btn">✂️</button>
+    </div>
+  <h1 id="tieScore">Tie Score: </h1>
     <script src="app.js"></script>
+  </div>
   </body>
 </html>
