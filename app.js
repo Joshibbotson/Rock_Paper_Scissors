@@ -35,6 +35,7 @@ scissors.addEventListener('click', (e) => {
   let tieScoreTotal= 0;
   
 function declareWinner() {
+  winnerDisplay.textContent = "Choose one !";
   playerScoreDisplay.textContent=`Player Score: ${playerScoreTotal}`;
   computerScoreDisplay.textContent=`Computer Score: ${computerScoreTotal}`;
   tieScoreDisplay.textContent=`Tie Score: ${tieScoreTotal}`;
